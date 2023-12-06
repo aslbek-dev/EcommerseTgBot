@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jIX2BaRHkAubhL5URWpvn/TuuywGL/2+ogkVKiCKHsQW7BfKrkiF5/39ZRf6UCLhCIkiSs4cpRnNid/JsQn0HQ==",
+  "dgSpecHash": "mGzQaQm3KpSKqtGr7AGrLoOGuw4xEoWUBJkn/732YF2NwhQwz6vngg29DEnZwrfdYsyHqSLmN6vMGt4frhkkyA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\dotnet projects\\EcommerseBot\\EcommerseBot.csproj",
+  "projectFilePath": "c:\\Users\\user\\dotnet projects\\EcommerseBot\\EcommerseBot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.3\\microsoft.aspnetcore.openapi.7.0.3.nupkg.sha512",
