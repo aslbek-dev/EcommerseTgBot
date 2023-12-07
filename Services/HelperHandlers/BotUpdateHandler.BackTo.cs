@@ -8,7 +8,7 @@ public partial class BotUpdateHandler
 {
     private bool IsBackToOnLocationAndBranchMarkup {get; set;} = false;
     private bool IsBackToOnProductType { get; set; } = false;
-    private bool IsBackToOnNumber { get; set; }
+    private bool IsBackToOnNumber { get; set; } = false;
     private async Task HandleBackToMessageAsync(ITelegramBotClient client, Message message,
         CancellationToken cancellationToken)
     {
@@ -16,11 +16,20 @@ public partial class BotUpdateHandler
         {   await GenerateSettingSectionsAsync(client, message, cancellationToken);
                 IsAskChangingPhoneNumber = false;
         }
+         else if(IsBackToOnNumber)
+        {
+            IsBackToOnNumber = false; 
+            await HandleProductType(client, LastMessage, cancellationToken);
+            LastMessage.Text = String.Empty;
+        }
             
-        else if(IsBackToMarkupOnBranch)
+        else if(IsBackToMarkupOnBranch )
+        {
+            IsBackToMarkupOnBranch = false;
             await GenerateChoosingBranch(client, message, cancellationToken);
+        }
         
-        else if(IsBackToOnLocationAndBranchMarkup && !IsBackToOnProductType)
+        else if(IsBackToOnLocationAndBranchMarkup)
         {
             IsBackToOnLocationAndBranchMarkup = false;
             await GenerateDeliverTypeSection(client, message, cancellationToken);
@@ -30,15 +39,10 @@ public partial class BotUpdateHandler
             IsBackToOnProductType = false;
             await GenerateDeliverByYourself(client, message, cancellationToken);
         }
-        else if(IsGenerateChoosingBranch && !IsBackToOnNumber)
+        else if(IsGenerateChoosingBranch)
         {
             IsGenerateChoosingBranch = false;
             await GenerateMainMenuAsync(client, message, cancellationToken);
-        }
-        else if(IsBackToOnNumber)
-        {
-            IsBackToOnNumber = false; 
-            await HandleProductType(client, LastMessage, cancellationToken);
         }
         else
             await GenerateMainMenuAsync(client, message, cancellationToken);

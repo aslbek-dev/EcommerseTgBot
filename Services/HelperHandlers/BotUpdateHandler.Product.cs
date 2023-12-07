@@ -30,6 +30,8 @@ public partial class BotUpdateHandler
         
         var markup = NumberKeyboard.GenerateNumberKeyboard();
         IsGenerateProductByType = true;
+        
+        IsBackToOnNumber = true;
 
         await client.SendTextMessageAsync(
             chatId: message.Chat.Id,
