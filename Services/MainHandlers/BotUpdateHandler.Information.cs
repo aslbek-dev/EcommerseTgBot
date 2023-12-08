@@ -7,15 +7,10 @@ namespace EcommerseBot.Services.Handlers;
 public partial class BotUpdateHandler
 {
     private bool IsGenerateChoosingBranch { get; set; } = false;
-    private bool IsBackToMarkupOnBranch { get; set; } = false;
-    
     private async Task GenerateChoosingBranch(ITelegramBotClient client, Message message,
         CancellationToken cancellationToken)
     {
-        IsBackToMarkupOnBranch = false;
-
         IsGenerateChoosingBranch = true;
-
         await client.SendTextMessageAsync(
             chatId: message.Chat.Id,
             replyMarkup: ChoosingBranchMarkup(),
@@ -39,7 +34,7 @@ public partial class BotUpdateHandler
                 "Quyidagi joylashuv manzili:",
             cancellationToken: cancellationToken);
         
-        IsBackToMarkupOnBranch = true;
+        IsBackToOnBranch = true;
         
         await client.SendLocationAsync(
             chatId: message.Chat.Id,

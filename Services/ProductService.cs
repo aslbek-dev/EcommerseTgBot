@@ -44,6 +44,8 @@ public class ProductService
     {
         return _productRepository.Select().ToList();
     }
+
+    
     public IList<Product> GetProducts()
     {
     List<Product> products = new List<Product>()
@@ -88,13 +90,8 @@ Tarkibi: Lahm skumbriya goʻshti, chiabatta non, pomidor, piyoz, aysberg, limon 
             Price = 4.000M,
             productType = ProductType.Kotletlar
         }
-
-
     };
     
         return products;
     }
-
-    
-    
 }

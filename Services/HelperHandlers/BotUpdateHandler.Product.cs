@@ -102,6 +102,7 @@ public partial class BotUpdateHandler
     private async Task HandleProductNumber(ITelegramBotClient client, Message message, 
         CancellationToken cancellationToken)
     {
+        IsBackToOnNumber = false;
         await client.SendTextMessageAsync(
             chatId: message.Chat.Id,
             text: "Davom etamizmi? 😉",
@@ -110,24 +111,42 @@ public partial class BotUpdateHandler
         );
 
         IsGenerateNumbers = false;
+        IsBackToOnProductName = false;
     }
     
 
     private ReplyKeyboardMarkup GenerateProductButtonsByProductType(ProductType productType)
+{
+    var products = _productService?.GetProducts().Where(p => p.productType == productType);
+
+    var buttons = new List<KeyboardButton[]>();
+    if (products != null)
     {
-        var products = _productService?.GetProducts().Where(p => p.productType == productType);
-
-        var buttons = products?.Select(product => new KeyboardButton(product.Name)).ToArray();
-
-        var keyboard = new ReplyKeyboardMarkup(buttons);
-        
-        keyboard.ResizeKeyboard = true;
-
-        return keyboard;
+        for (int i = 0; i < products.Count(); i += 2)
+        {
+            var buttonRow = products.Skip(i).Take(2).Select(product => new KeyboardButton(product.Name)).ToArray();
+            buttons.Add(buttonRow);
+        }
     }
+    var additionalButtonsRow = new KeyboardButton[]
+    {
+        new KeyboardButton("📥 Savat"),
+        new KeyboardButton("⬅️ Ortga")
+    };
+    buttons.Add(additionalButtonsRow);
+
+    var keyboard = new ReplyKeyboardMarkup(buttons.ToArray());
+
+    keyboard.ResizeKeyboard = true;
+    IsBackToOnProductName = true;
+    IsBackToOnProductType = false;
+
+    return keyboard;
+}
 
     private ReplyKeyboardMarkup ProductTypeMarkup()
     {
+        IsBackToOnLocationAndBranchMarkup = false;
         IsBackToOnProductType = true;
         var keyboard = new ProductTypeKeyboard();
         var markup = keyboard.Generate();
