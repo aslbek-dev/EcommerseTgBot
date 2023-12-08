@@ -20,7 +20,6 @@ public partial class BotUpdateHandler
         {
             IsBackToOnNumber = false; 
             await HandleProductType(client, LastMessage, cancellationToken);
-            LastMessage.Text = String.Empty;
         }
             
         else if(IsBackToMarkupOnBranch )

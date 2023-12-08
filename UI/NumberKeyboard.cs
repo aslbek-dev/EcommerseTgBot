@@ -19,6 +19,8 @@ public class NumberKeyboard
 
         buttons = buttons.Concat(new[] { new[] { basketButton, backButton } }).ToArray();
         var keyboard = new ReplyKeyboardMarkup(buttons);
+        keyboard.OneTimeKeyboard = true;
+        keyboard.ResizeKeyboard = true;
 
         return keyboard;
     }

@@ -75,6 +75,9 @@ public partial class BotUpdateHandler
             
             else if(IsGenerateProductByType)
                 await HandleProductName(client, message, cancellationToken);
+                
+            else if(IsGenerateNumbers)
+                await HandleProductNumber(client, message, cancellationToken);
 
         }
     }

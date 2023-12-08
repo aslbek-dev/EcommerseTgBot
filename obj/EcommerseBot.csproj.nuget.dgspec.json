@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\user\\dotnet projects\\EcommerseBot\\EcommerseBot.csproj": {}
+    "C:\\Users\\user\\dotnet projects\\EcommerseBot\\EcommerseBot.csproj": {}
   },
   "projects": {
-    "c:\\Users\\user\\dotnet projects\\EcommerseBot\\EcommerseBot.csproj": {
+    "C:\\Users\\user\\dotnet projects\\EcommerseBot\\EcommerseBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\user\\dotnet projects\\EcommerseBot\\EcommerseBot.csproj",
+        "projectUniqueName": "C:\\Users\\user\\dotnet projects\\EcommerseBot\\EcommerseBot.csproj",
         "projectName": "EcommerseBot",
-        "projectPath": "c:\\Users\\user\\dotnet projects\\EcommerseBot\\EcommerseBot.csproj",
+        "projectPath": "C:\\Users\\user\\dotnet projects\\EcommerseBot\\EcommerseBot.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\user\\dotnet projects\\EcommerseBot\\obj\\",
+        "outputPath": "C:\\Users\\user\\dotnet projects\\EcommerseBot\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -10,6 +10,7 @@ public partial class BotUpdateHandler
 {
     private bool IsGenerateProductType {get; set; }
     private bool IsGenerateProductByType { get; set; }
+    private bool IsGenerateNumbers { get; set; } = false;
     private Message LastMessage {get; set; }
 
     private async Task GenerateProductTypeSection(ITelegramBotClient client, Message message, 
@@ -29,7 +30,7 @@ public partial class BotUpdateHandler
     {
         
         var markup = NumberKeyboard.GenerateNumberKeyboard();
-        IsGenerateProductByType = true;
+        IsGenerateNumbers = true;
         
         IsBackToOnNumber = true;
 
@@ -44,10 +45,15 @@ public partial class BotUpdateHandler
     private async Task HandleProductType(ITelegramBotClient client, Message message, 
         CancellationToken cancellationToken)
     {
-        IsGenerateProductByType = true;
+
+
         LastMessage = message;
 
+
         IsGenerateProductType = false;
+
+        IsGenerateProductByType = true;
+
         if(message.Text is "Kotletlar")
         {
             await client.SendTextMessageAsync(
@@ -93,6 +99,19 @@ public partial class BotUpdateHandler
         
         await GenerateNumber(client, message, cancellationToken);
     }
+    private async Task HandleProductNumber(ITelegramBotClient client, Message message, 
+        CancellationToken cancellationToken)
+    {
+        await client.SendTextMessageAsync(
+            chatId: message.Chat.Id,
+            text: "Davom etamizmi? 😉",
+            replyMarkup: ProductTypeMarkup(),
+            cancellationToken: cancellationToken
+        );
+
+        IsGenerateNumbers = false;
+    }
+    
 
     private ReplyKeyboardMarkup GenerateProductButtonsByProductType(ProductType productType)
     {
